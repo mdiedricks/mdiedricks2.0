@@ -18,20 +18,16 @@ const settings = {
               "/"
             ],
             [
-              "Nature",
-              "/category/nature/"
+              "Projects",
+              "/category/projects/"
             ],
             [
-              "Travel",
-              "/category/travel/"
+              "Writing",
+              "/category/writing/"
             ],
             [
-              "Japan",
-              "/tag/japan/"
-            ],
-            [
-              "About Us",
-              "/about-us/"
+              "Contact",
+              "/contact/"
             ]
           ],
           "featured": {
