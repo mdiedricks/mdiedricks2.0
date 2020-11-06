@@ -6,28 +6,40 @@ const Home = ({state, actions}) => {
     // * this should get the posts from ...somewhere
     useEffect(() => {
         actions.source.fetch('/logbook/');
-        
     }, []);
 
+    let posts = [];
+    // * this will add fetched data to state
     const data = state.source.get('/logbook/')
     console.log(data)
-    // const posts = data.items.map(({type, id}) => state.source[type][id]);
-    const posts = data.items.slice(0,1).map(({type, id}) => state.source[type][id]);
 
+    if(data.isReady){
+        // posts = data.items.map(({type, id}) => state.source[type][id]);
+        // * use below alternative to slice results
+        posts = data.items.slice(0,3).map(({type, id}) => state.source[type][id]);
+    }
+    
     return(
         <div>
             <SectionDiv>
                 <MainText>Creative Technologist</MainText>
-                <Paragraph>I enjoy building anything with</Paragraph>
+                <Paragraph>I enjoy building anything that involves code, electronics, computers and art!</Paragraph>
                 <CTAButton href='/contact'>Get in touch!</CTAButton>
             </SectionDiv>
+            {/* // * below section will display recentposts when it's fixed */}
             <SectionDiv>
                 <SectionTitle>Recent Posts</SectionTitle>
                 <Paragraph>See what I've been working on recently</Paragraph>
-                {posts.map((p) => 
+                {data.isReady ? 
+                    posts.map((p) => 
                     <a href={p.link} key={p.id}> {p.title.rendered} </a>
-                )}
+                    ): null
+                }
             </SectionDiv>            
+            <SectionDiv>
+                <SectionTitle>Latest log entries</SectionTitle>
+                <Paragraph>See what I've been writing about</Paragraph>
+            </SectionDiv>
         </div>
     )
     
@@ -44,7 +56,9 @@ const col3 = `#FFE6E0`; // white
 const SectionTitle = styled.h4`  
 `
 const MainText = styled.h1`
-    margin: 0 1rem 1rem 1rem;
+    margin: 20% 1rem 1rem 1rem;
+    margin-top: auto;
+    font-size: 48px;
 `
 const Subtext = styled.h2`
     margin: 1rem 1rem 1rem 1rem;
@@ -59,7 +73,7 @@ const SectionDiv = styled.section`
     background-color: ${col1};
     color: ${col3};
     padding: 1rem 1rem;
-    min-height: cal(100vh-50px);
+    min-height: calc(100vh - 70px - 71px);
 `
 
 // * Components =====

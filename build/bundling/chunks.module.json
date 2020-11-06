@@ -2,18 +2,18 @@
   "errors": [],
   "warnings": [],
   "version": "4.44.1",
-  "hash": "e7001fa1bd4becf9addb",
+  "hash": "e3efc2a4494ff3581ffc",
   "publicPath": "/static/",
   "outputPath": "C:\\Users\\micha\\Documents\\repos\\mdiedricks2.0\\build\\static",
   "assetsByChunkName": {
     "mdiedricks2.0": [
       "mdiedricks2.0.module.js",
-      "mdiedricks2.0.55d742354140914ad0f9.hot-update.js"
+      "mdiedricks2.0.fd90bdbc4e53154fa858.hot-update.js"
     ]
   },
   "assets": [
     {
-      "name": "55d742354140914ad0f9.hot-update.json",
+      "name": "fd90bdbc4e53154fa858.hot-update.json",
       "size": 55,
       "chunks": [],
       "chunkNames": [],
@@ -24,8 +24,8 @@
       "emitted": false
     },
     {
-      "name": "mdiedricks2.0.55d742354140914ad0f9.hot-update.js",
-      "size": 4479,
+      "name": "mdiedricks2.0.fd90bdbc4e53154fa858.hot-update.js",
+      "size": 43160,
       "chunks": [
         "mdiedricks2.0"
       ],
@@ -40,7 +40,7 @@
     },
     {
       "name": "mdiedricks2.0.module.js",
-      "size": 5040349,
+      "size": 5074024,
       "chunks": [
         "mdiedricks2.0"
       ],
@@ -59,7 +59,7 @@
       ],
       "assets": [
         "mdiedricks2.0.module.js",
-        "mdiedricks2.0.55d742354140914ad0f9.hot-update.js"
+        "mdiedricks2.0.fd90bdbc4e53154fa858.hot-update.js"
       ],
       "children": {},
       "childAssets": {}
@@ -72,7 +72,7 @@
       ],
       "assets": [
         "mdiedricks2.0.module.js",
-        "mdiedricks2.0.55d742354140914ad0f9.hot-update.js"
+        "mdiedricks2.0.fd90bdbc4e53154fa858.hot-update.js"
       ],
       "children": {},
       "childAssets": {}

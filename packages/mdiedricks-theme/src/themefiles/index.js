@@ -105,7 +105,10 @@ const Root = ({ state, actions }) => {
         </Content>
         <Footer>
           <Container>
-            This is the footer
+            <div css={css`display: flex; flex-direction: row; justify-content: center;`}>
+            <SocialLink href="https://github.com/mdiedricks">Contact me @ Github</SocialLink>
+            </div>
+            
           </Container>
         </Footer>
       </>
@@ -137,6 +140,14 @@ const NavLink = styled(Link)`
   font-family: 'Space Mono', monospace;
   text-decoration: none;
 `
+const SocialLink = styled(Link)` 
+  color: ${col2};
+  font-family: 'Space Mono', monospace;
+  text-decoration: none;
+  :hover{
+    color: ${col3};
+  }
+`
 
 // * Layout ===== 
 const Container = styled.div`
@@ -158,6 +169,7 @@ const Content = styled.div`
 `
 const Navbar =  styled.header`
   background-color: ${bgcol};
+  padding: 8px;
 `
   const Navmenu = styled.nav`
   background-color: ${bgcol};
