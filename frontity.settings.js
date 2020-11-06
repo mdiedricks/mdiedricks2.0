@@ -9,43 +9,17 @@ const settings = {
   },
   "packages": [
     {
-    //   "name": "@frontity/mars-theme",
-    //   "state": {
-    //     "theme": {
-    //       "menu": [
-    //         [
-    //           "Home",
-    //           "/"
-    //         ],
-    //         [
-    //           "Projects",
-    //           "/category/projects/"
-    //         ],
-    //         [
-    //           "Writing",
-    //           "/category/writing/"
-    //         ],
-    //         [
-    //           "Contact",
-    //           "/contact/"
-    //         ]
-    //       ],
-    //       "featured": {
-    //         "showOnList": false,
-    //         "showOnPost": false
-    //       }
-    //     }
-    //   }
-    // },
-    // {
       "name": "mdiedricks-theme",
-      
     },
     {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "api": "https://mdiedricks.com/wp-json"
+          "api": "https://mdiedricks.com/wp-json",
+          // this also remove "isArchive true" from the home page
+          "homepage": "holder", 
+           // this forces the logbook page to have isArchive = true
+          "postsPage": "logbook"
         }
       }
     },

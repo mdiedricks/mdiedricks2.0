@@ -9,6 +9,7 @@ import { connect } from 'frontity'
     return (
         <div>
             <h2>{page.title.rendered}</h2>
+            <span>This is a spage</span>
             <div dangerouslySetInnerHTML={{__html: page.content.rendered}}/>
         </div>
     )
