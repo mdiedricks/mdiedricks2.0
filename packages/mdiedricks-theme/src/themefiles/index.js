@@ -9,6 +9,7 @@ import Switch from "@frontity/components/switch";
 import Link  from './link';
 import List from './list';
 import Post from './post';
+import Project from './project';
 import Page from './page';
 import Contact from './contact';
 import Home from './home';
@@ -59,8 +60,9 @@ const Root = ({ state, actions }) => {
             {/* // * This menu only shows at width larger than 768px */}
             <NavMenuWide>  
               <NavLink href='/'>home</NavLink>
+              <NavLink href='/projects'>projects</NavLink>
               <NavLink href='/logbook'>logbook</NavLink>
-              <NavLink href='/objective'>objective</NavLink>
+              {/* <NavLink href='/objective'>objective</NavLink> */}
               <NavLink href='/contact'>contact</NavLink>
             </NavMenuWide>
 
@@ -72,12 +74,15 @@ const Root = ({ state, actions }) => {
                   <NavLink href='/'>
                     <span onClick={actions.theme.closeMenu}>home</span>
                   </NavLink>
+                  <NavLink href='/projects'>
+                    <span onClick={actions.theme.closeMenu}>projects</span>
+                  </NavLink>
                   <NavLink href='/logbook'>
                     <span onClick={actions.theme.closeMenu}>logbook</span>
                   </NavLink>
-                  <NavLink href='/objective'>
+                  {/* <NavLink href='/objective'>
                     <span onClick={actions.theme.closeMenu}>objective</span>
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink href='/contact'>
                     <span onClick={actions.theme.closeMenu}>contact</span>
                   </NavLink>
@@ -94,10 +99,11 @@ const Root = ({ state, actions }) => {
           <main>
             <Switch>
               <Home when={data.isHome}/>
+              <Post when={data.isPost}/>
               <List when={data.isArchive}/>
               <Page when={data.isPage}/>
-              <Post when={data.isPost}/>
               <Contact when={data.isContact}/>
+              <Project when={data.isProject}/>
             </Switch>
 
           </main>

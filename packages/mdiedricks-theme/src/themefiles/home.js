@@ -6,17 +6,25 @@ const Home = ({state, actions}) => {
     // * this should get the posts from ...somewhere
     useEffect(() => {
         actions.source.fetch('/logbook/');
+        actions.source.fetch('/project/');
     }, []);
 
     let posts = [];
+    let projects = [];
     // * this will add fetched data to state
-    const data = state.source.get('/logbook/')
-    console.log(data)
+    const postsData = state.source.get('/logbook/')
+    const projectsData = state.source.get('/project/')
 
-    if(data.isReady){
-        // posts = data.items.map(({type, id}) => state.source[type][id]);
-        // * use below alternative to slice results
-        posts = data.items.slice(0,3).map(({type, id}) => state.source[type][id]);
+    if(postsData.isReady){
+        posts = postsData.items.slice(0,3).map(({type, id}) => state.source[type][id]);
+    }
+    if(projectsData.isReady){
+        console.log(`Sorting projects...`)
+        projects = projectsData.items.slice(0,3).map(({type, id}) => state.source[type][id]);
+        console.log(`Printing "projects....`)
+        console.log(projects)
+        console.log(`Printing "projectsDATA....`)
+        console.log(projectsData)
     }
     
     return(
@@ -30,8 +38,8 @@ const Home = ({state, actions}) => {
             <SectionDiv>
                 <SectionTitle>Recent Posts</SectionTitle>
                 <Paragraph>See what I've been working on recently</Paragraph>
-                {data.isReady ? 
-                    posts.map((p) => 
+                {projectsData.isReady ? 
+                    projects.map((p) => 
                     <a href={p.link} key={p.id}> {p.title.rendered} </a>
                     ): null
                 }
@@ -39,6 +47,11 @@ const Home = ({state, actions}) => {
             <SectionDiv>
                 <SectionTitle>Latest log entries</SectionTitle>
                 <Paragraph>See what I've been writing about</Paragraph>
+                {postsData.isReady ? 
+                    posts.map((p) => 
+                    <a href={p.link} key={p.id}> {p.title.rendered} </a>
+                    ): null
+                }
             </SectionDiv>
         </div>
     )

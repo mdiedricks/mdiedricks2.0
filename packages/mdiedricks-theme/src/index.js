@@ -7,10 +7,10 @@ const contactHandler = {
   }
 }
 
-const logbookHandler = {
-  pattern: "/logbook/",
+const projectHandler = {
+  pattern: "/project/",
   func: ({ state }) => {
-    state.source.data["/logbook/"].isTest = true;
+    state.source.data["/project/"].isProject = true;
   }
 }
 
@@ -21,8 +21,7 @@ export default {
   },
   state: {
     theme: {
-      isMenuOpen: false,
-      recentPosts: []
+      isMenuOpen: false
     },
   },
   actions: {
@@ -35,7 +34,7 @@ export default {
       },
       init: ({ libraries }) => {
         libraries.source.handlers.push(contactHandler);
-        libraries.source.handlers.push(logbookHandler);
+        libraries.source.handlers.push(projectHandler);
       },
     }    
   }

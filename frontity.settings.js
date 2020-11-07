@@ -19,7 +19,13 @@ const settings = {
           // this also remove "isArchive true" from the home page
           "homepage": "holder", 
            // this forces the logbook page to have isArchive = true
-          "postsPage": "logbook"
+          "postsPage": "logbook",
+          "postTypes": [
+            {"type": "project",
+              "endpoint": "project",
+              "archive": "/project"
+            }
+          ]
         }
       }
     },
