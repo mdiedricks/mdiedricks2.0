@@ -37,9 +37,9 @@ const data = state.source.get(state.router.link)
           }
           nav a{
           }
-          // ! grab this for quotes
-          .quote{
+          blockquote{
             font-family: 'East Sea Dokdo', cursive;
+            font-size: 1.8rem;
           }
         `}        
       />
@@ -51,67 +51,61 @@ const data = state.source.get(state.router.link)
 
       <Content>
         <Container>
-        <Navbar isPostType={data.isPostType} 
-          css={css`display: flex;
-              justify-content: space-between;
-              align-items: center;`}>
-          <div>
-            <NavTitle href='/'><h2>mdiedricks</h2></NavTitle>
-            <NavSubtitle>this is mission control</NavSubtitle>
-          </div>
+          <Navbar isPostType={data.isPostType} 
+            css={css`display: flex;
+                justify-content: space-between;
+                align-items: center;`}>
+            <div>
+              <NavTitle href='/'><h2>mdiedricks</h2></NavTitle>
+              <NavSubtitle>this is mission control</NavSubtitle>
+            </div>
 
-          {/* // * This menu only shows at width larger than 768px */}
-          <NavMenuWide>  
-            <NavLink href='/'>home</NavLink>
-            <NavLink href='/projects'>projects</NavLink>
-            <NavLink href='/logbook'>logbook</NavLink>
-            {/* <NavLink href='/objective'>objective</NavLink> */}
-            <NavLink href='/contact'>contact</NavLink>
-          </NavMenuWide>
+            {/* // * This menu only shows at width larger than 768px */}
+            <NavMenuWide>  
+              <NavLink href='/'>home</NavLink>
+              <NavLink href='/projects'>projects</NavLink>
+              <NavLink href='/logbook'>logbook</NavLink>
+              {/* <NavLink href='/objective'>objective</NavLink> */}
+            </NavMenuWide>
 
-          {/* // * This menu only shows at width smaller than than 768px */}
-          { state.theme.isMenuOpen ? (
-            <NavMenuShort> 
-              <MenuButton onClick={actions.theme.closeMenu}>menu</MenuButton>
-              <Navmenu className="dropMenu" css={css`position: absolute;`}>
-                <NavLink href='/'>
-                  <span onClick={actions.theme.closeMenu}>home</span>
-                </NavLink>
-                <NavLink href='/projects'>
-                  <span onClick={actions.theme.closeMenu}>projects</span>
-                </NavLink>
-                <NavLink href='/logbook'>
-                  <span onClick={actions.theme.closeMenu}>logbook</span>
-                </NavLink>
-                {/* <NavLink href='/objective'>
-                  <span onClick={actions.theme.closeMenu}>objective</span>
-                </NavLink> */}
-                <NavLink href='/contact'>
-                  <span onClick={actions.theme.closeMenu}>contact</span>
-                </NavLink>
-              </Navmenu>
-            </NavMenuShort>
-          ) : (
-            <NavMenuShort>
-              <MenuButton onClick={actions.theme.openMenu}>menu</MenuButton>
-            </NavMenuShort>
-          )}
+            {/* // * This menu only shows at width smaller than than 768px */}
+            { state.theme.isMenuOpen ? (
+              <NavMenuShort> 
+                <MenuButton onClick={actions.theme.closeMenu}>menu</MenuButton>
+                <Navmenu>
+                  <NavLink href='/'>
+                    <span onClick={actions.theme.closeMenu}>home</span>
+                  </NavLink>
+                  <NavLink href='/projects'>
+                    <span onClick={actions.theme.closeMenu}>projects</span>
+                  </NavLink>
+                  <NavLink href='/logbook'>
+                    <span onClick={actions.theme.closeMenu}>logbook</span>
+                  </NavLink>
+                  {/* <NavLink href='/objective'>
+                    <span onClick={actions.theme.closeMenu}>objective</span>
+                  </NavLink> */}
+                </Navmenu>
+              </NavMenuShort>
+            ) : (
+              <NavMenuShort>
+                <MenuButton onClick={actions.theme.openMenu}>menu</MenuButton>
+              </NavMenuShort>
+            )}
+          </Navbar>
 
-        </Navbar>
-
-        <main>
-          <Switch>
-            <Home when={data.isHome}/>
-            <Post when={data.isPost}/>
-            <List when={data.isArchive}/>
-            <Page when={data.isPage}/>
-            <Contact when={data.isContact}/>
-            <Project when={data.isProject}/>
-          </Switch>
-
-        </main>
+          <main>
+            <Switch>
+              <Home when={data.isHome}/>
+              <Post when={data.isPost}/>
+              <List when={data.isArchive}/>
+              <Page when={data.isPage}/>
+              <Project when={data.isProject}/>
+            </Switch>
+          </main>
         </Container>
       </Content>
+      
       <Footer>
         <Container css={css`display: flex; flex-direction: row; justify-content: center;`}>
             <SocialLink href='https://github.com/mdiedricks'>
@@ -130,7 +124,7 @@ const data = state.source.get(state.router.link)
 export default connect(Root);
 
 
-// Colours
+// * Colours
 const bgcol = `#011006`; // dark green
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
@@ -143,14 +137,14 @@ const NavTitle = styled(Link)`
   font-family: 'Space Mono', monospace;
   font-weight: 700;
   transition: color 0.3s;
-    :hover{
-      color: ${col2};
-    }
+  :hover{
+    color: ${col2};
+  }
 `
 const NavSubtitle = styled.span`
   font-family: 'Work Sans', sans-serif;
   color: #FFE6E0;
-  `
+`
 const NavLink = styled(Link)` 
   color: ${col3};
   font-family: 'Space Mono', monospace;
@@ -164,7 +158,6 @@ const NavLink = styled(Link)`
 const SocialLink = styled.a` 
   padding: 0 0.5rem;
 `
-
 // * Layout ===== 
 const Container = styled.div`
   margin:0 0.5rem;
@@ -187,13 +180,14 @@ const Navbar =  styled.header`
   background-color: ${bgcol};
   padding: 8px 0; 
 `
-
 const Navmenu = styled.nav`
-  background-color: ${bgcol};
+  padding: 0.5rem 0 0 0;
+  opacity: 0.9;
   text-align: right;
   transform: translate(-45px);
+  position: absolute;
+  z-index: 10;
 `
-
 const NavMenuWide = styled.div`
   display: none;
   @media(min-width:768px){

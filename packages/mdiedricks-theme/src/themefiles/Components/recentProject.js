@@ -4,7 +4,7 @@ import Link from '../link';
 
  function recentProject(props) {
     return (
-        <ProjCard key={props.proj.id}>
+        <ProjCard>
             <ImageHolder> 
                 <Image src={props.proj.jetpack_featured_media_url}></Image>
             </ImageHolder>
@@ -60,9 +60,6 @@ const ProjCard = styled.div`
         border: 1px solid ${col2};
         p {
             color: ${col2};
-        }
-        a{
-            color: ${col3};
         }
     }
     @media(max-width:768px){

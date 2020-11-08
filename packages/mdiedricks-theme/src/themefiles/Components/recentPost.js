@@ -4,7 +4,7 @@ import Link from '../link';
 
 const recentPost = (props) => {
     return (
-        <PostCard key={props.post.id}>
+        <PostCard >
             <ImageHolder>
                 <Image src='https://via.placeholder.com/450x280' />
             </ImageHolder>
@@ -60,9 +60,7 @@ const PostCard = styled.div`
         p {
             color: ${col2};
         }
-        a{
-            color: ${col3};
-        }
+
     }
     @media(max-width:768px){
         grid-template-columns: 1fr;

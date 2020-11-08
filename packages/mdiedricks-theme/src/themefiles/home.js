@@ -18,12 +18,10 @@ const Home = ({state, actions}) => {
     const projectsData = state.source.get('/projects/')
 
     if(projectsData.isReady){
-        // console.log(projectsData)
         projects = projectsData.items.slice(0,3).map(({type, id}) => state.source[type][id]);
     }
     if(postsData.isReady){
         posts = postsData.items.slice(0,3).map(({type, id}) => state.source[type][id]);
-        console.log(posts)
     }
     
     return(
@@ -31,7 +29,7 @@ const Home = ({state, actions}) => {
             <HeroDiv>
                 <MainText>Software Developer & Designer</MainText>
                 <Paragraph>I enjoy building anything that involves code, electronics, computers and art! See what I've been <TextLink href='#recent_posts'>working</TextLink> on lately, or have a look at some of my past <TextLink href='#recent_projects'>projects</TextLink>.</Paragraph>
-                <CTAButton href='/contact'>Get in touch!</CTAButton>
+                <CTAButton href='/linkedin.com/in/mdiedricks/'>Get in touch!</CTAButton>
             </HeroDiv>
             <Divider/>
 
@@ -39,7 +37,7 @@ const Home = ({state, actions}) => {
             <SectionDiv id='recent_projects'>
                 {projectsData.isReady ? 
                     projects.map((post) => 
-                    <RecentPost post={post}/>
+                    <RecentPost post={post} key={post.id}/>
                     ): null // TODO add "loading" article here
                 }
             </SectionDiv>
@@ -50,7 +48,7 @@ const Home = ({state, actions}) => {
                 
                 {postsData.isReady ? 
                     posts.map((proj) =>
-                    <RecentProject proj={proj}/> 
+                    <RecentProject proj={proj} key={proj.id}/> 
                     ): null // TODO add "loading" article here
                 }
             </SectionDiv>
@@ -60,7 +58,7 @@ const Home = ({state, actions}) => {
 }
 
 export default connect(Home)
-// Colours
+// * Colours
 const bgcol = `#011006`; // dark green
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
@@ -104,13 +102,13 @@ const SectionDiv = styled.section`
     row-gap: 1rem;
     min-height: 100vh;
     @media(min-width:481px) and (max-width:768px){
-        margin:0;  
+        padding: 0;  
     }
     @media(min-width:768px) and (max-width:1200px){
-        margin:0 rem;
+        padding:0 2rem;
     }
     @media(min-width:1200px) {
-        margin:0 10rem;  
+        padding:0 9rem;  
     }
 `
 const Divider = styled.div`
