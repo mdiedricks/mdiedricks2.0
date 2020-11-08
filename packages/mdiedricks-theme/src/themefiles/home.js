@@ -1,56 +1,57 @@
-import React, { useEffect } from 'react'
-import { connect, styled } from 'frontity'
+import React, { useEffect } from 'react';
+import { connect, styled, css } from 'frontity';
 import Link from './link';
+import RecentProject from './components/recentProject';
+import RecentPost from './components/recentPost';
 
 const Home = ({state, actions}) => {
-    // * this should get the posts from ...somewhere
+    // * retrieve posts from wp-api
     useEffect(() => {
         actions.source.fetch('/logbook/');
-        actions.source.fetch('/project/');
+        actions.source.fetch('/projects/');
     }, []);
 
     let posts = [];
     let projects = [];
-    // * this will add fetched data to state
+    // * assign variable name to posts now stored in state
     const postsData = state.source.get('/logbook/')
-    const projectsData = state.source.get('/project/')
+    const projectsData = state.source.get('/projects/')
 
+    if(projectsData.isReady){
+        // console.log(projectsData)
+        projects = projectsData.items.slice(0,3).map(({type, id}) => state.source[type][id]);
+    }
     if(postsData.isReady){
         posts = postsData.items.slice(0,3).map(({type, id}) => state.source[type][id]);
-    }
-    if(projectsData.isReady){
-        console.log(`Sorting projects...`)
-        projects = projectsData.items.slice(0,3).map(({type, id}) => state.source[type][id]);
-        console.log(`Printing "projects....`)
-        console.log(projects)
-        console.log(`Printing "projectsDATA....`)
-        console.log(projectsData)
+        console.log(posts)
     }
     
     return(
-        <div>
-            <SectionDiv>
-                <MainText>Creative Technologist</MainText>
-                <Paragraph>I enjoy building anything that involves code, electronics, computers and art!</Paragraph>
+        <div css={css`text-align: center;`}>
+            <HeroDiv>
+                <MainText>Software Developer & Designer</MainText>
+                <Paragraph>I enjoy building anything that involves code, electronics, computers and art! See what I've been <TextLink href='#recent_posts'>working</TextLink> on lately, or have a look at some of my past <TextLink href='#recent_projects'>projects</TextLink>.</Paragraph>
                 <CTAButton href='/contact'>Get in touch!</CTAButton>
-            </SectionDiv>
-            {/* // * below section will display recentposts when it's fixed */}
-            <SectionDiv>
-                <SectionTitle>Recent Posts</SectionTitle>
-                <Paragraph>See what I've been working on recently</Paragraph>
+            </HeroDiv>
+            <Divider/>
+
+            <SectionTitle>Recent Posts</SectionTitle>
+            <SectionDiv id='recent_projects'>
                 {projectsData.isReady ? 
-                    projects.map((p) => 
-                    <a href={p.link} key={p.id}> {p.title.rendered} </a>
-                    ): null
+                    projects.map((post) => 
+                    <RecentPost post={post}/>
+                    ): null // TODO add "loading" article here
                 }
-            </SectionDiv>            
-            <SectionDiv>
-                <SectionTitle>Latest log entries</SectionTitle>
-                <Paragraph>See what I've been writing about</Paragraph>
+            </SectionDiv>
+            <Divider/>
+
+            <SectionTitle>Latest log entries</SectionTitle>
+            <SectionDiv id='recent_posts'>
+                
                 {postsData.isReady ? 
-                    posts.map((p) => 
-                    <a href={p.link} key={p.id}> {p.title.rendered} </a>
-                    ): null
+                    posts.map((proj) =>
+                    <RecentProject proj={proj}/> 
+                    ): null // TODO add "loading" article here
                 }
             </SectionDiv>
         </div>
@@ -66,40 +67,74 @@ const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
 
 // * Typography ====
-const SectionTitle = styled.h4`  
+const SectionTitle = styled.h3`
+color: ${col2};
+margin: 2rem 0; 
 `
 const MainText = styled.h1`
-    margin: 20% 1rem 1rem 1rem;
-    margin-top: auto;
     font-size: 48px;
-`
-const Subtext = styled.h2`
-    margin: 1rem 1rem 1rem 1rem;
+    padding: 0 0 1rem 0;
 `
 const Paragraph = styled.p`
-    margin: 1rem 1rem 1rem 1rem;
+    font-size: 1.6rem;
+    padding: 1rem 0 1rem 0;
+`
+const TextLink = styled.a`
+    text-decoration: none;
+    color: ${col1};
+    transition: color 0.3s;
+    :hover{
+        color: ${col2};
+    }
 `
 
 // * Layout =====
-const SectionDiv = styled.section`
+const HeroDiv = styled.section`
     text-align: center;
-    background-color: ${col1};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     color: ${col3};
-    padding: 1rem 1rem;
     min-height: calc(100vh - 70px - 71px);
+    padding: 1rem 15%;
+`
+const SectionDiv = styled.section`
+    display: grid;
+    grid-template-rows: repeat(3, 1fr) 1rem;
+    row-gap: 1rem;
+    min-height: 100vh;
+    @media(min-width:481px) and (max-width:768px){
+        margin:0;  
+    }
+    @media(min-width:768px) and (max-width:1200px){
+        margin:0 rem;
+    }
+    @media(min-width:1200px) {
+        margin:0 10rem;  
+    }
+`
+const Divider = styled.div`
+    background-color: ${col2};
+    height: 1px;
+    width: 60%;
+    margin: 0 auto;
 `
 
 // * Components =====
 const CTAButton = styled(Link)`
     background-color: ${bgcol};
-    border: 1px solid ${col2};
-    color: ${col2};
+    border: 1px solid ${col1};
+    color: ${col1};
     padding: 8px 16px;
+    margin: 1.5rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
-`
-const ArticleLink = styled(Link)`
-    text-decoration: none;
+    transition: color 0.3s;
+    :hover{
+        background-color: ${bgcol};
+        border: 1px solid ${col2};
+        color: ${col2};
+     }
 `

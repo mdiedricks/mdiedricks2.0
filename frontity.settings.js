@@ -23,7 +23,7 @@ const settings = {
           "postTypes": [
             {"type": "project",
               "endpoint": "project",
-              "archive": "/project"
+              "archive": "/projects"
             }
           ]
         }

@@ -19,6 +19,7 @@
     "@frontity/tiny-router": "^1.2.1",
     "@frontity/wp-source": "^1.8.1",
     "frontity": "^1.10.1",
-    "mdiedricks-theme": "file:packages/mdiedricks-theme"
+    "mdiedricks-theme": "file:packages/mdiedricks-theme",
+    "react-icons": "^3.11.0"
   }
 }

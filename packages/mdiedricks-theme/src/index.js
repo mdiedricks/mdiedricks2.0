@@ -13,6 +13,12 @@ const projectHandler = {
     state.source.data["/project/"].isProject = true;
   }
 }
+// const projectsPageHandler = {
+//   pattern: "/projects/",
+//   func: ({ state }) => {
+//     state.source.data["/projects/"].isArchive = true;
+//   }
+// }
 
 export default {
   name: "mdiedricks-theme",
@@ -35,6 +41,7 @@ export default {
       init: ({ libraries }) => {
         libraries.source.handlers.push(contactHandler);
         libraries.source.handlers.push(projectHandler);
+        // libraries.source.handlers.push(projectsPageHandler);
       },
     }    
   }

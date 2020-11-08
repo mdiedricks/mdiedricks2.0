@@ -13,115 +13,121 @@ import Project from './project';
 import Page from './page';
 import Contact from './contact';
 import Home from './home';
+import {IoLogoGithub, IoLogoLinkedin} from 'react-icons/io';
+import { IconContext } from "react-icons";
 
 const Root = ({ state, actions }) => {
     
-    const data = state.source.get(state.router.link)
-    
-    return (
-      <>
-        <Global 
-          styles={css`
-          @import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=East+Sea+Dokdo&family=Work+Sans&display=swap');
-            *{
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-            }
-            html{
-              background-color: #011006;
-              font-family: 'Work Sans', sans-serif;
-            }
-            nav a{
-            }
-            // ! grab this for quotes
-            .quote{
-              font-family: 'East Sea Dokdo', cursive;
-            }
-          `}        
-        />
-        <Head>
-          <title>
-            mdiedricks - this is mission control
-          </title>
-        </Head>
+const data = state.source.get(state.router.link)
 
-        <Content>
-          <Container>
-          <Navbar isPostType={data.isPostType} 
-            css={css`display: flex;
-                justify-content: space-between;
-                align-items: center;`}>
-            <div>
-              <NavTitle href='/'><h2>mdiedricks</h2></NavTitle>
-              <NavSubtitle>this is mission control</NavSubtitle>
-            </div>
+  return (
+    <>
+    <IconContext.Provider value={{color:`#DC4F31`, size:`2rem`, padding: '0 1rem'}}>
+      <Global 
+        styles={css`
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=East+Sea+Dokdo&family=Work+Sans&display=swap');
+          *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          html{
+            background-color: #011006;
+            font-family: 'Work Sans', sans-serif;
+          }
+          nav a{
+          }
+          // ! grab this for quotes
+          .quote{
+            font-family: 'East Sea Dokdo', cursive;
+          }
+        `}        
+      />
+      <Head>
+        <title>
+          mdiedricks - this is mission control
+        </title>
+      </Head>
 
-            {/* // * This menu only shows at width larger than 768px */}
-            <NavMenuWide>  
-              <NavLink href='/'>home</NavLink>
-              <NavLink href='/projects'>projects</NavLink>
-              <NavLink href='/logbook'>logbook</NavLink>
-              {/* <NavLink href='/objective'>objective</NavLink> */}
-              <NavLink href='/contact'>contact</NavLink>
-            </NavMenuWide>
+      <Content>
+        <Container>
+        <Navbar isPostType={data.isPostType} 
+          css={css`display: flex;
+              justify-content: space-between;
+              align-items: center;`}>
+          <div>
+            <NavTitle href='/'><h2>mdiedricks</h2></NavTitle>
+            <NavSubtitle>this is mission control</NavSubtitle>
+          </div>
 
-            {/* // * This menu only shows at width smaller than than 768px */}
-            { state.theme.isMenuOpen ? (
-              <NavMenuShort> 
-                <MenuButton onClick={actions.theme.closeMenu}>menu</MenuButton>
-                <Navmenu className="dropMenu" css={css`position: absolute;`}>
-                  <NavLink href='/'>
-                    <span onClick={actions.theme.closeMenu}>home</span>
-                  </NavLink>
-                  <NavLink href='/projects'>
-                    <span onClick={actions.theme.closeMenu}>projects</span>
-                  </NavLink>
-                  <NavLink href='/logbook'>
-                    <span onClick={actions.theme.closeMenu}>logbook</span>
-                  </NavLink>
-                  {/* <NavLink href='/objective'>
-                    <span onClick={actions.theme.closeMenu}>objective</span>
-                  </NavLink> */}
-                  <NavLink href='/contact'>
-                    <span onClick={actions.theme.closeMenu}>contact</span>
-                  </NavLink>
-                </Navmenu>
-              </NavMenuShort>
-            ) : (
-              <NavMenuShort>
-                <MenuButton onClick={actions.theme.openMenu}>menu</MenuButton>
-              </NavMenuShort>
-            )}
+          {/* // * This menu only shows at width larger than 768px */}
+          <NavMenuWide>  
+            <NavLink href='/'>home</NavLink>
+            <NavLink href='/projects'>projects</NavLink>
+            <NavLink href='/logbook'>logbook</NavLink>
+            {/* <NavLink href='/objective'>objective</NavLink> */}
+            <NavLink href='/contact'>contact</NavLink>
+          </NavMenuWide>
 
-          </Navbar>
+          {/* // * This menu only shows at width smaller than than 768px */}
+          { state.theme.isMenuOpen ? (
+            <NavMenuShort> 
+              <MenuButton onClick={actions.theme.closeMenu}>menu</MenuButton>
+              <Navmenu className="dropMenu" css={css`position: absolute;`}>
+                <NavLink href='/'>
+                  <span onClick={actions.theme.closeMenu}>home</span>
+                </NavLink>
+                <NavLink href='/projects'>
+                  <span onClick={actions.theme.closeMenu}>projects</span>
+                </NavLink>
+                <NavLink href='/logbook'>
+                  <span onClick={actions.theme.closeMenu}>logbook</span>
+                </NavLink>
+                {/* <NavLink href='/objective'>
+                  <span onClick={actions.theme.closeMenu}>objective</span>
+                </NavLink> */}
+                <NavLink href='/contact'>
+                  <span onClick={actions.theme.closeMenu}>contact</span>
+                </NavLink>
+              </Navmenu>
+            </NavMenuShort>
+          ) : (
+            <NavMenuShort>
+              <MenuButton onClick={actions.theme.openMenu}>menu</MenuButton>
+            </NavMenuShort>
+          )}
 
-          <main>
-            <Switch>
-              <Home when={data.isHome}/>
-              <Post when={data.isPost}/>
-              <List when={data.isArchive}/>
-              <Page when={data.isPage}/>
-              <Contact when={data.isContact}/>
-              <Project when={data.isProject}/>
-            </Switch>
+        </Navbar>
 
-          </main>
-          </Container>
-        </Content>
-        <Footer>
-          <Container>
-            <div css={css`display: flex; flex-direction: row; justify-content: center;`}>
-            <SocialLink href="https://github.com/mdiedricks">Contact me @ Github</SocialLink>
-            </div>
-            
-          </Container>
-        </Footer>
-      </>
-    );
-  };
+        <main>
+          <Switch>
+            <Home when={data.isHome}/>
+            <Post when={data.isPost}/>
+            <List when={data.isArchive}/>
+            <Page when={data.isPage}/>
+            <Contact when={data.isContact}/>
+            <Project when={data.isProject}/>
+          </Switch>
 
-  export default connect(Root);
+        </main>
+        </Container>
+      </Content>
+      <Footer>
+        <Container css={css`display: flex; flex-direction: row; justify-content: center;`}>
+            <SocialLink href='https://github.com/mdiedricks'>
+              <IoLogoGithub />
+            </SocialLink>
+            <SocialLink href='linkedin.com/in/mdiedricks/'>
+              <IoLogoLinkedin />
+            </SocialLink>
+        </Container>
+      </Footer>
+      </IconContext.Provider>
+    </>
+  );
+};
+
+export default connect(Root);
 
 
 // Colours
@@ -132,10 +138,14 @@ const col3 = `#FFE6E0`; // white
 
 // * Typography =====
 const NavTitle = styled(Link)`
-color: ${col3};
-text-decoration: none;
-font-family: 'Space Mono', monospace;
-font-weight: 700;
+  color: ${col3};
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  transition: color 0.3s;
+    :hover{
+      color: ${col2};
+    }
 `
 const NavSubtitle = styled.span`
   font-family: 'Work Sans', sans-serif;
@@ -145,14 +155,14 @@ const NavLink = styled(Link)`
   color: ${col3};
   font-family: 'Space Mono', monospace;
   text-decoration: none;
-`
-const SocialLink = styled(Link)` 
-  color: ${col2};
-  font-family: 'Space Mono', monospace;
-  text-decoration: none;
+  padding-left: 1rem;
+  transition: color 0.3s;
   :hover{
-    color: ${col3};
+    color: ${col2};
   }
+`
+const SocialLink = styled.a` 
+  padding: 0 0.5rem;
 `
 
 // * Layout ===== 
@@ -175,22 +185,19 @@ const Content = styled.div`
 `
 const Navbar =  styled.header`
   background-color: ${bgcol};
-  padding: 8px;
-`
-  const Navmenu = styled.nav`
-  background-color: ${bgcol};
-`
-const Footer = styled.div`
-  height: 70px;
-  color: ${col3};
+  padding: 8px 0; 
 `
 
-// * Components =====
+const Navmenu = styled.nav`
+  background-color: ${bgcol};
+  text-align: right;
+  transform: translate(-45px);
+`
+
 const NavMenuWide = styled.div`
   display: none;
   @media(min-width:768px){
     display: flex;
-    margin:0 4rem;  
 }
 `
 const NavMenuShort = styled.div`
@@ -198,8 +205,13 @@ const NavMenuShort = styled.div`
     display: none;  
 }
 `
+const Footer = styled.div`
+  height: 70px;
+  color: ${col3};
+`
+// * Components =====
 const MenuButton = styled.button`
-font-family: 'Space Mono', monospace;
+  font-family: 'Space Mono', monospace;
   background-color: ${bgcol};
   border: 1px solid ${col1};
   color: ${col1};
@@ -208,6 +220,11 @@ font-family: 'Space Mono', monospace;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+  :hover{
+    color: ${col2};
+    border-color: ${col2};
+  }
 `
 
   

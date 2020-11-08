@@ -3,18 +3,22 @@ import { connect, styled } from 'frontity';
 import Link from './link';
 
 const List = ({state}) => {
-    
     // get current URL address - store in 'data'
     const data = state.source.get(state.router.link)
+    let projects = [];
+    
+    if(data.isReady){
+        projects = data.items.slice(0,3).map(({type, id}) => state.source[type][id]);
+    }
     
     return (
         <div>
-            {data.items.map( item => {
-                const post = state.source.post[item.id]
+            {projects.map( proj => {
                 return (
-                    <ArticleLink key={item.id} href={post.link}>
-                        {post.title.rendered}
-                    </ArticleLink>
+                    <ArticleLink key={proj.id} href={proj.link}>
+                        {proj.title.rendered}
+                     </ArticleLink>
+                    
                 )
             })}
         </div>

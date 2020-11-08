@@ -11,7 +11,6 @@ import { connect } from 'frontity'
         <div>
             <h2>{post.title.rendered}</h2>
             <p><strong>Posted: </strong>{post.date}</p>
-            {/* <p><strong>Author: </strong>{author.name}</p> */}
             <div dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
             <span />
         </div>
