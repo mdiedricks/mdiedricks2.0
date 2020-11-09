@@ -1,0 +1,89 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "4.44.2",
+  "hash": "7dfeb2408a53f8cdc106",
+  "publicPath": "/static/",
+  "outputPath": "C:\\Users\\micha\\Documents\\repos\\mdiedricks2.0\\build\\static",
+  "assetsByChunkName": {
+    "mdiedricks2.0": [
+      "mdiedricks2.0.module.js",
+      "mdiedricks2.0.12fd65821f9a89ce04a5.hot-update.js"
+    ]
+  },
+  "assets": [
+    {
+      "name": "12fd65821f9a89ce04a5.hot-update.json",
+      "size": 55,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "hotModuleReplacement": true,
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "mdiedricks2.0.12fd65821f9a89ce04a5.hot-update.js",
+      "size": 78171,
+      "chunks": [
+        "mdiedricks2.0"
+      ],
+      "chunkNames": [
+        "mdiedricks2.0"
+      ],
+      "info": {
+        "hotModuleReplacement": true,
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "mdiedricks2.0.module.js",
+      "size": 6955679,
+      "chunks": [
+        "mdiedricks2.0"
+      ],
+      "chunkNames": [
+        "mdiedricks2.0"
+      ],
+      "info": {},
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "mdiedricks2.0": {
+      "chunks": [
+        "mdiedricks2.0"
+      ],
+      "assets": [
+        "mdiedricks2.0.module.js",
+        "mdiedricks2.0.12fd65821f9a89ce04a5.hot-update.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "mdiedricks2.0": {
+      "chunks": [
+        "mdiedricks2.0"
+      ],
+      "assets": [
+        "mdiedricks2.0.module.js",
+        "mdiedricks2.0.12fd65821f9a89ce04a5.hot-update.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 2,
+      "debug": false
+    }
+  },
+  "children": []
+}

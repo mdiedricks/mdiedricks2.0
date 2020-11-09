@@ -107,7 +107,7 @@ const data = state.source.get(state.router.link)
             <SocialLink href='https://github.com/mdiedricks'>
               <IoLogoGithub />
             </SocialLink>
-            <SocialLink href='linkedin.com/in/mdiedricks/'>
+            <SocialLink href='http://linkedin.com/in/mdiedricks/'>
               <IoLogoLinkedin />
             </SocialLink>
         </Container>

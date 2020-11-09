@@ -34,7 +34,7 @@ const Home = ({state, actions}) => {
             <HeroDiv>
                 <MainText>Software Developer & Designer</MainText>
                 <Paragraph>I enjoy building anything that involves code, electronics, computers and art! See what I've been <TextLink href='#recent_posts'>working</TextLink> on lately, or have a look at some of my past <TextLink href='#recent_projects'>projects</TextLink>.</Paragraph>
-                <CTAButton href='/linkedin.com/in/mdiedricks/'>Get in touch!</CTAButton>
+                <CTAButton ><a href='http://linkedin.com/in/mdiedricks/'>Get in touch!</a></CTAButton>
             </HeroDiv>
             <Divider/>
 
@@ -124,20 +124,27 @@ const Divider = styled.div`
 `
 
 // * Components =====
-const CTAButton = styled(Link)`
+const CTAButton = styled.div`
     background-color: ${bgcol};
     border: 1px solid ${col1};
-    color: ${col1};
-    padding: 8px 16px;
-    margin: 1.5rem;
+    padding: 12px 20px;
+    margin: 1.5rem auto;
+    width: auto;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     cursor: pointer;
-    transition: color 0.3s;
+    
     :hover{
-        background-color: ${bgcol};
         border: 1px solid ${col2};
-        color: ${col2};
-     }
+        transform: border-color 0.3s;
+        a{
+            color: ${col2};
+            transform: color 0.3s;
+        }
+    }
+    a{
+        text-decoration: none;
+        color: ${col1};
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
 `
