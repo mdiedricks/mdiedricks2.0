@@ -1,12 +1,12 @@
 import React from 'react'
-import { connect, styled, css } from 'frontity'
+import { connect, styled  } from 'frontity'
 import Link from '../link';
 
 const recentPost = (props) => {
     return (
         <PostCard >
             <ImageHolder>
-                <Image src='https://via.placeholder.com/450x280' />
+            <Image src={props.post.jetpack_featured_media_url} />
             </ImageHolder>
             <TextHolder>
                 <PostTitle href={props.post.link} key={props.post.id}> {props.post.title.rendered} </PostTitle>

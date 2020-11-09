@@ -15,7 +15,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "api": "https://mdiedricks.com/wp-json",
+          "api": "https://wordpress.mdiedricks.com/wp-json",
           // this also remove "isArchive true" from the home page
           "homepage": "holder", 
            // this forces the logbook page to have isArchive = true

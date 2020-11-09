@@ -3,10 +3,12 @@ import { connect, styled, css } from 'frontity'
 import Link from '../link';
 
  function recentProject(props) {
+     
     return (
         <ProjCard>
             <ImageHolder> 
-                <Image src={props.proj.jetpack_featured_media_url}></Image>
+            {/* <Image src={props.proj._links.self[0].href}></Image> */}
+            <Image src={props.proj.imageObj}></Image>
             </ImageHolder>
             <TextHolder>
                 <ProjTitle href={props.proj.link} key={props.proj.id}> {props.proj.title.rendered} </ProjTitle>

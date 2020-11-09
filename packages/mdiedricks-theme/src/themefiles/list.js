@@ -6,12 +6,20 @@ const List = ({state}) => {
     // get current URL address - store in 'data'
     const data = state.source.get(state.router.link)
     let projects = [];
+    let posts = [];
     
     // check the route if projects page or logbook page
     if(data.isReady && state.router.link === '/projects/'){
         projects = data.items.slice(0,12).map(({type, id}) => state.source[type][id]);
+        for(let obj of projects){
+            obj.imageObj = state.source.attachment[obj.featured_media].source_url
+        }
+        console.log(projects);
     } else {
-        projects = data.items.slice(0,5).map(({type, id}) => state.source[type][id]);
+        posts = data.items.slice(0,5).map(({type, id}) => state.source[type][id]);
+        for(let obj of posts){
+            obj.imageObj = state.source.attachment[obj.featured_media].source_url
+        }
     }
 
     if( state.router.link === '/projects/'){
@@ -20,7 +28,7 @@ const List = ({state}) => {
                 {projects.map( proj => {
                 return (
                     <ProjectCard key={proj.id}>
-                        <ProjectImage src='https://via.placeholder.com/450x280' />
+                        <ProjectImage src={proj.imageObj} />
                         <ProjectTitle href={proj.link}>{proj.title.rendered}</ProjectTitle>
                     </ProjectCard>
                 )
@@ -30,11 +38,11 @@ const List = ({state}) => {
     } else if (state.router.link === '/logbook/'){
         return (
             <PostContainer>
-                {projects.map( post => {
+                {posts.map( post => {
                 return (
                     <PostCard key={post.id}>
                         <ImageHolder>
-                            <PostImage src='https://via.placeholder.com/450x280' />
+                            <PostImage src={post.imageObj} />
                         </ImageHolder>
                         <PostTitle href={post.link}> {post.title.rendered}</PostTitle>
                         {/* <PostDate>

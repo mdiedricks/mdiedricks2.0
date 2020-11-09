@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect, styled, css } from 'frontity';
 import Link from './link';
-import RecentProject from './components/recentProject';
-import RecentPost from './components/recentPost';
+import RecentProject from './Components/recentProject';
+import RecentPost from './Components/recentPost';
 
 const Home = ({state, actions}) => {
     // * retrieve posts from wp-api
@@ -16,9 +16,14 @@ const Home = ({state, actions}) => {
     // * assign variable name to posts now stored in state
     const postsData = state.source.get('/logbook/')
     const projectsData = state.source.get('/projects/')
+    // let fMedia = '';
 
     if(projectsData.isReady){
         projects = projectsData.items.slice(0,3).map(({type, id}) => state.source[type][id]);
+        for(let obj of projects){
+            obj.imageObj = state.source.attachment[obj.featured_media].source_url
+        }
+
     }
     if(postsData.isReady){
         posts = postsData.items.slice(0,3).map(({type, id}) => state.source[type][id]);
@@ -33,22 +38,22 @@ const Home = ({state, actions}) => {
             </HeroDiv>
             <Divider/>
 
-            <SectionTitle>Recent Posts</SectionTitle>
+            <SectionTitle>Recent Projects</SectionTitle>
             <SectionDiv id='recent_projects'>
                 {projectsData.isReady ? 
-                    projects.map((post) => 
-                    <RecentPost post={post} key={post.id}/>
+                    projects.map((proj) => 
+                    <RecentProject proj={proj}  key={proj.id}/>
                     ): null // TODO add "loading" article here
                 }
             </SectionDiv>
             <Divider/>
 
-            <SectionTitle>Latest log entries</SectionTitle>
+            <SectionTitle>Recent logs</SectionTitle>
             <SectionDiv id='recent_posts'>
                 
                 {postsData.isReady ? 
-                    posts.map((proj) =>
-                    <RecentProject proj={proj} key={proj.id}/> 
+                    posts.map((post) =>
+                    <RecentPost post={post} key={post.id}/> 
                     ): null // TODO add "loading" article here
                 }
             </SectionDiv>

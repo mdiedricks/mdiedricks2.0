@@ -65,7 +65,6 @@ const data = state.source.get(state.router.link)
               <NavLink href='/'>home</NavLink>
               <NavLink href='/projects'>projects</NavLink>
               <NavLink href='/logbook'>logbook</NavLink>
-              {/* <NavLink href='/objective'>objective</NavLink> */}
             </NavMenuWide>
 
             {/* // * This menu only shows at width smaller than than 768px */}
@@ -82,9 +81,6 @@ const data = state.source.get(state.router.link)
                   <NavLink href='/logbook'>
                     <span onClick={actions.theme.closeMenu}>logbook</span>
                   </NavLink>
-                  {/* <NavLink href='/objective'>
-                    <span onClick={actions.theme.closeMenu}>objective</span>
-                  </NavLink> */}
                 </Navmenu>
               </NavMenuShort>
             ) : (
@@ -99,7 +95,7 @@ const data = state.source.get(state.router.link)
               <Home when={data.isHome}/>
               <Post when={data.isPost}/>
               <List when={data.isArchive}/>
-              <Page when={data.isPage}/>
+              {/* <Page when={data.isPage}/> */}
               <Project when={data.isProject}/>
             </Switch>
           </main>
