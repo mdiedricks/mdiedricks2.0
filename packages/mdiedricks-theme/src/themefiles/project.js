@@ -6,8 +6,6 @@ import { connect, styled } from 'frontity'
     const data = state.source.get(state.router.link);
     const post = state.source[data.type][data.id];
     const fMedia = state.source.attachment[post.featured_media].source_url; 
-    console.log(post);
-    console.log(fMedia);
     
     return (
         <Content>
@@ -24,7 +22,7 @@ import { connect, styled } from 'frontity'
 export default connect(Project);
 
 // * Colours
-const bgcol = `#011006`; // dark green
+const bgcol = `#190307`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
@@ -40,12 +38,21 @@ const ProjectDate = styled.p`
 `
 const ProjectBody = styled.div`
     text-align: justify-left;
+    h1, h2, h4, h5{
+        margin: 1rem 0 2rem 0;
+        // margin-bottom: 2rem;
+    }
+    ul, ol{
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
     li{
-        list-style-type: none;
+        margin-left: 1rem;
     }
     img{
-        width: 100%;
+        width: 70%;
         height: auto;
+        margin: 1rem auto;
     }
     figure{
         text-align: center;
@@ -55,7 +62,7 @@ const ProjectBody = styled.div`
         font-size: 0.7rem;
     }
     p{
-        margin: 1rem auto;
+        margin: 2rem auto;
         width: 98%;
     }
     blockquote{
@@ -87,8 +94,11 @@ const Content = styled.div`
 // * Components ====
 const ImageHolder = styled.div`
     width: 100%;
+    height: 25vh;
     overflow: hidden;
+    margin-bottom: 2rem;
 `
 const FeaturedImage = styled.img`
-    max-width: 100%;
+    width: 100%;
+    opacity: 0.8;
 `

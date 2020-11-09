@@ -6,6 +6,8 @@ import { connect, styled } from 'frontity'
     const data = state.source.get(state.router.link);
     const post = state.source[data.type][data.id];
     const fMedia = state.source.attachment[post.featured_media].source_url;
+    // const fMedia = state.source.attachment[post.featured_media];
+    console.log(fMedia);
     
 
     return (
@@ -23,7 +25,7 @@ import { connect, styled } from 'frontity'
 export default connect(Post);
 
 // * Colours
-const bgcol = `#011006`; // dark green
+const bgcol = `#190307`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
@@ -71,6 +73,13 @@ const PostBody = styled.div`
     h4{
         margin: 2rem 0 1rem 0;
     }
+    a{
+        color: ${col2};
+        text-decoration: none;
+        :hover{
+            color: ${col1};
+        }
+    }
 `
 
 // * Layout ====
@@ -95,8 +104,10 @@ const Content = styled.div`
 // * Components ====
 const ImageHolder = styled.div`
     width: 100%;
+    height: 20vh;
     overflow: hidden;
 `
 const FeaturedImage = styled.img`
-    max-width: 100%;
+    width: 100%;
+    opacity: 0.8;
 `

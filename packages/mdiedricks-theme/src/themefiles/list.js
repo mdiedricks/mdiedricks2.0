@@ -12,13 +12,14 @@ const List = ({state}) => {
     if(data.isReady && state.router.link === '/projects/'){
         projects = data.items.slice(0,12).map(({type, id}) => state.source[type][id]);
         for(let obj of projects){
-            obj.imageObj = state.source.attachment[obj.featured_media].source_url
+            // TODO = add error handling if image does not exist
+            obj.imageObj = state.source.attachment[obj.featured_media].source_url;
         }
-        console.log(projects);
-    } else {
+    } else if (data.isReady && state.router.link === '/logbook/') {
         posts = data.items.slice(0,5).map(({type, id}) => state.source[type][id]);
         for(let obj of posts){
-            obj.imageObj = state.source.attachment[obj.featured_media].source_url
+            // TODO = add error handling if image does not exist
+            obj.imageObj = state.source.attachment[obj.featured_media].source_url;
         }
     }
 
@@ -41,13 +42,10 @@ const List = ({state}) => {
                 {posts.map( post => {
                 return (
                     <PostCard key={post.id}>
-                        <ImageHolder>
+                        <ImageHolder className='holder'>
                             <PostImage src={post.imageObj} />
                         </ImageHolder>
                         <PostTitle href={post.link}> {post.title.rendered}</PostTitle>
-                        {/* <PostDate>
-                            {Date.parse(props.post.date)} 
-                        </PostDate>                 */}
                         <PostEx dangerouslySetInnerHTML={{__html: post.excerpt.rendered}}/>
                     </PostCard>   
                 )
@@ -59,8 +57,8 @@ const List = ({state}) => {
 
 export default connect(List);
 
-// * Colours
-const bgcol = `#011006`; // dark green
+// * Colours =======
+const bgcol = `#190307`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
@@ -115,9 +113,7 @@ const ProjectContainer = styled.div`
     @media(min-width:768px) and (max-width:1200px){
         grid-template-columns: 1fr 1fr 1fr;
     }
-    
 `
-
 const PostContainer = styled.div`
     display: grid;
     grid-template-rows: 1fr;
@@ -158,7 +154,6 @@ const PostCard =styled.div`// TODO edit this
     margin: 1rem auto 2rem auto;
     :hover{
         img {
-            border: 2px solid ${col2};
             opacity: 1;
             transition: opacity 0.3s;
         }
@@ -169,6 +164,9 @@ const PostCard =styled.div`// TODO edit this
         p {
             color: ${col3};
         }
+        .holder{
+            border: 2px solid ${col2};
+        }
     }
     
     @media(min-width:768px) and (max-width:1200px){
@@ -178,15 +176,16 @@ const PostCard =styled.div`// TODO edit this
         width: 70%; 
     }
 `
-const ImageHolder = styled.div` // TODO edit this
+const ImageHolder = styled.div` 
     margin-bottom: 1rem;
+    height: 35vh;
     overflow: hidden;
-`
-const PostImage = styled.img` // TODO edit this
-    opacity: 0.5;
     border: 2px solid ${bgcol};
+`
+const PostImage = styled.img` 
+    opacity: 0.5;
     transition: opacity 0.5s;
     width: 100%;
-    height: 100%;
+    vertical align: top;
     object-fit: cover;
 `

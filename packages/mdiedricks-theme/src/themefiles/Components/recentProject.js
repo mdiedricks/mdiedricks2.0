@@ -15,21 +15,19 @@ import Link from '../link';
                 <ProjDate>{props.proj.date}</ProjDate>
                 <ProjEx dangerouslySetInnerHTML={{__html: props.proj.excerpt.rendered}}/>
             </TextHolder>
-              
-
         </ProjCard>
     )
 }
 
 export default connect(recentProject)
 
-// Colours
-const bgcol = `#011006`; // dark green
+// * Colours ==========
+const bgcol = `#190307`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
 
-//Typography
+// * Typography ==========
 const ProjTitle = styled(Link)`
     font-size: 1.6rem;
     color: ${col1};
@@ -49,7 +47,7 @@ const ProjEx = styled.p`
     color: ${col3};
     transition: color 0.2s;
 `
-// Layout
+// * Layout ==========
 const ProjCard = styled.div` 
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -57,7 +55,6 @@ const ProjCard = styled.div`
     padding: 1rem;
     border: 1px solid ${bgcol};
     transition: border-color 0.3s;
-    
     :hover{
         border: 1px solid ${col2};
         p {
@@ -70,11 +67,12 @@ const ProjCard = styled.div`
     }
 `
 const ImageHolder = styled.div`
+    position: relative;
     overflow: hidden;
+    max-height: calc(33vh - 70px);
 `
 const Image = styled.img`
     width: 100%;
-    height: 100%;
     object-fit: cover;
 `
 const TextHolder = styled.div`

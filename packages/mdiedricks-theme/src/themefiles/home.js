@@ -50,7 +50,6 @@ const Home = ({state, actions}) => {
 
             <SectionTitle>Recent logs</SectionTitle>
             <SectionDiv id='recent_posts'>
-                
                 {postsData.isReady ? 
                     posts.map((post) =>
                     <RecentPost post={post} key={post.id}/> 
@@ -64,7 +63,7 @@ const Home = ({state, actions}) => {
 
 export default connect(Home)
 // * Colours
-const bgcol = `#011006`; // dark green
+const bgcol = `#190307`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
@@ -103,9 +102,10 @@ const HeroDiv = styled.section`
 `
 const SectionDiv = styled.section`
     display: grid;
-    grid-template-rows: repeat(3, 1fr) 1rem;
+    grid-template-rows: repeat(3, 1fr);
     row-gap: 1rem;
     min-height: 100vh;
+    
     @media(min-width:481px) and (max-width:768px){
         padding: 0;  
     }

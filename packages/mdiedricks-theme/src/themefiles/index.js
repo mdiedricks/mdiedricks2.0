@@ -31,8 +31,8 @@ const data = state.source.get(state.router.link)
             padding: 0;
             box-sizing: border-box;
           }
-          html{
-            background-color: #011006;
+          html{ // 190307  011006
+            background-color: #190307;
             font-family: 'Work Sans', sans-serif;
           }
           nav a{
@@ -121,7 +121,7 @@ export default connect(Root);
 
 
 // * Colours
-const bgcol = `#011006`; // dark green
+const bgcol = `#190307`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
@@ -173,7 +173,6 @@ const Content = styled.div`
   min-height: calc(100vh - 70px);
 `
 const Navbar =  styled.header`
-  background-color: ${bgcol};
   padding: 8px 0; 
 `
 const Navmenu = styled.nav`
@@ -197,6 +196,7 @@ const NavMenuShort = styled.div`
 `
 const Footer = styled.div`
   height: 70px;
+  padding: 0.8rem;
   color: ${col3};
 `
 // * Components =====

@@ -22,12 +22,12 @@ const recentPost = (props) => {
 export default connect(recentPost)
 
 // Colours
-const bgcol = `#011006`; // dark green
+const bgcol = `#190307`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
 
-//Typography
+// * Typography ==========
 const PostTitle = styled(Link)`
     font-size: 1.6rem;
     color: ${col1};
@@ -46,11 +46,10 @@ const PostEx = styled.p`
     padding: 1rem 0 0 0 ;
     color: ${col3};
 `
-// Layout
+// * Layout ==========
 const PostCard = styled.div`
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    // grid-template-row: 3fr;
     column-gap: 1rem;
     padding: 1rem;
     border: 1px solid ${bgcol};
@@ -60,7 +59,6 @@ const PostCard = styled.div`
         p {
             color: ${col2};
         }
-
     }
     @media(max-width:768px){
         grid-template-columns: 1fr;
@@ -68,7 +66,9 @@ const PostCard = styled.div`
     }
 `
 const ImageHolder = styled.div`
+    position: relative;
     overflow: hidden;
+    max-height: calc(33vh - 70px);
 `
 const Image = styled.img`
     width: 100%;
