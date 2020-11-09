@@ -34,7 +34,7 @@ const Home = ({state, actions}) => {
             <HeroDiv>
                 <MainText>Software Developer & Designer</MainText>
                 <Paragraph>I enjoy building anything that involves code, electronics, computers and art! See what I've been <TextLink href='#recent_posts'>working</TextLink> on lately, or have a look at some of my past <TextLink href='#recent_projects'>projects</TextLink>.</Paragraph>
-                <CTAButton ><a href='http://linkedin.com/in/mdiedricks/'>Get in touch!</a></CTAButton>
+                <CTAButton ><a href='http://linkedin.com/in/mdiedricks/' target="_blank" >Get in touch!</a></CTAButton>
             </HeroDiv>
             <Divider/>
 
@@ -63,7 +63,7 @@ const Home = ({state, actions}) => {
 
 export default connect(Home)
 // * Colours
-const bgcol = `#190307`; // dark red
+const bgcol = `#0F0104`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
@@ -107,13 +107,13 @@ const SectionDiv = styled.section`
     min-height: 100vh;
     
     @media(min-width:481px) and (max-width:768px){
-        padding: 0;  
+        padding: 0 0 2rem 0;  
     }
     @media(min-width:768px) and (max-width:1200px){
-        padding:0 2rem;
+        padding:0 2rem 2rem 2rem;;
     }
     @media(min-width:1200px) {
-        padding:0 9rem;  
+        padding:0 9rem 2rem 9rem;;  
     }
 `
 const Divider = styled.div`

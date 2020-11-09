@@ -22,7 +22,7 @@ import { connect, styled } from 'frontity'
 export default connect(Project);
 
 // * Colours
-const bgcol = `#190307`; // dark red
+const bgcol = `#0F0104`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
@@ -69,6 +69,13 @@ const ProjectBody = styled.div`
         padding: 0.5rem 2rem;
         color: ${col2};
         text-align: center;
+    }
+    a{
+        color: ${col2};
+        text-decoration: none;
+        :hover{
+            color: ${col1};
+        }
     }
 `
 

@@ -22,7 +22,7 @@ import Link from '../link';
 export default connect(recentProject)
 
 // * Colours ==========
-const bgcol = `#190307`; // dark red
+const bgcol = `#0F0104`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white

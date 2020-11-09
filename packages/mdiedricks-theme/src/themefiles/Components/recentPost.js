@@ -22,7 +22,7 @@ const recentPost = (props) => {
 export default connect(recentPost)
 
 // Colours
-const bgcol = `#190307`; // dark red
+const bgcol = `#0F0104`; // dark red
 const col1 = `#529840`; // green
 const col2 = `#DC4F31`; // red
 const col3 = `#FFE6E0`; // white
@@ -66,13 +66,12 @@ const PostCard = styled.div`
     }
 `
 const ImageHolder = styled.div`
-    position: relative;
     overflow: hidden;
+    height: 100%;
     max-height: calc(33vh - 70px);
 `
 const Image = styled.img`
     width: 100%;
-    height: 100%;
     object-fit: cover;
 `
 const TextHolder = styled.div`
