@@ -1,26 +1,35 @@
-import React from 'react'
-import { connect, styled } from 'frontity'
+import React from "react";
+import { connect, styled } from "frontity";
+import getProjectDate from "./util/getProjectDate";
 
- const Post = ({ state }) => {
+const Post = ({ state }) => {
+  const data = state.source.get(state.router.link);
+  const post = state.source[data.type][data.id];
+  const fMedia = state.source.attachment[post.featured_media].source_url;
+  // console.log(fMedia);
+  console.log(post);
+  const postDate = getProjectDate(post.date);
+  const logID = post.acf.log_id;
 
-    const data = state.source.get(state.router.link);
-    const post = state.source[data.type][data.id];
-    const fMedia = state.source.attachment[post.featured_media].source_url;
-    // const fMedia = state.source.attachment[post.featured_media];
-    console.log(fMedia);
-    
-
-    return (
-        <Content>
-            <ImageHolder>
-                <FeaturedImage src={fMedia} />
-            </ImageHolder>
-            <PostTitle>{post.title.rendered}</PostTitle>
-            <PostDate><strong>Posted: </strong>{post.date}</PostDate>
-            <PostBody dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
-        </Content>
-    )
-}
+  return (
+    <Content>
+      <ImageHolder>
+        <FeaturedImage src={fMedia} />
+      </ImageHolder>
+      <PostTitle>{post.title.rendered}</PostTitle>
+      <PostDetails>
+        <VerticalLine />
+        <PostDate>
+          <strong>Posted </strong>
+          {postDate} <br />
+          <strong>ID </strong>
+          {logID}
+        </PostDate>
+      </PostDetails>
+      <PostBody dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+    </Content>
+  );
+};
 
 export default connect(Post);
 
@@ -32,55 +41,59 @@ const col3 = `#FFE6E0`; // white
 
 // * Typography ====
 const PostTitle = styled.h1`
-    margin: 1rem 0 1rem 0;
-`
+  margin: 2rem auto 1rem;
+`;
 const PostDate = styled.p`
-    font-size: 0.9rem;
-    color: ${col2};
-    margin: 1rem 0 1rem 0; 
-`
+  font-size: 0.9rem;
+  color: ${col2};
+`;
 const PostBody = styled.div`
-    text-align: justify-left;
-    ul, ol{
-        margin-left: 1rem;
-        margin-right: 1rem;
-        li{
-            margin: 1rem 0;
-        }
-        img{
-            margin: 1rem 0;
-        }
+  text-align: justify-left;
+  margin: 2rem 0;
+  ul,
+  ol {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    li {
+      margin: 1rem 0;
     }
-    img{
-        max-width: 100%;
-        height: auto;
+    img {
+      margin: 1rem 0;
     }
-    figure{
-        text-align: center;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  figure {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  figcaption {
+    margin: 1rem auto 3rem;
+    font-size: 0.7rem;
+  }
+  p {
+    margin: 1rem auto 1.4rem;
+    line-height: 1.4rem;
+    letter-spacing: 0.03rem;
+  }
+  blockquote {
+    padding: 0.5rem 2rem;
+    color: ${col2};
+    text-align: center;
+  }
+  h4 {
+    margin: 0 auto 1.4rem;
+  }
+  a {
+    color: ${col2};
+    text-decoration: none;
+    :hover {
+      color: ${col1};
     }
-    figcaption{
-        margin-bottom: 1rem;
-        font-size: 0.7rem;
-    }
-    p{
-        margin: 1rem auto;
-    }
-    blockquote{
-        padding: 0.5rem 2rem;
-        color: ${col2};
-        text-align: center;
-    }
-    h4{
-        margin: 2rem 0 1rem 0;
-    }
-    a{
-        color: ${col2};
-        text-decoration: none;
-        :hover{
-            color: ${col1};
-        }
-    }
-`
+  }
+`;
 
 // * Layout ====
 const Content = styled.div`
@@ -99,15 +112,25 @@ const Content = styled.div`
     @media(min-width:1200px){
         width: 50%;
     }
-`
+`;
+
+const PostDetails = styled.div`
+  display: flex;
+  margin: 1rem 0;
+`;
+const VerticalLine = styled.div`
+  width: 1px;
+  background-color: ${col2};
+  margin-right: 1rem;
+`;
 
 // * Components ====
 const ImageHolder = styled.div`
-    width: 100%;
-    height: 20vh;
-    overflow: hidden;
-`
+  width: 100%;
+  height: 20vh;
+  overflow: hidden;
+`;
 const FeaturedImage = styled.img`
-    width: 100%;
-    opacity: 0.8;
-`
+  width: 100%;
+  opacity: 0.8;
+`;
