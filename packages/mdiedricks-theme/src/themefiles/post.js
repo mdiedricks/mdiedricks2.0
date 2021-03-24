@@ -34,9 +34,15 @@ const Post = ({ state }) => {
 export default connect(Post);
 
 // * Colours
+// const bgcol = `#0F0104`; // dark red
+// const col1 = `#529840`; // green
+// const col2 = `#DC4F31`; // red
+// const col3 = `#FFE6E0`; // white
+
 const bgcol = `#0F0104`; // dark red
-const col1 = `#529840`; // green
-const col2 = `#DC4F31`; // red
+const bgcol2 = `#1e0308`; // dark red
+const col1 = `#5fb04a`; // green
+const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white
 
 // * Typography ====
@@ -110,7 +116,8 @@ const Content = styled.div`
         width: 70%;
     }
     @media(min-width:1200px){
-        width: 50%;
+      width: 80%;
+      max-width: 1100px;
     }
 `;
 

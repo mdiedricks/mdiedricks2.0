@@ -86,9 +86,14 @@ const Home = ({ state, actions }) => {
 
 export default connect(Home);
 // * Colours
+// const bgcol = `#0F0104`; // dark red
+// const col1 = `#529840`; // green
+// const col2 = `#DC4F31`; // red
+// const col3 = `#FFE6E0`; // white
+
 const bgcol = `#0F0104`; // dark red
-const col1 = `#529840`; // green
-const col2 = `#DC4F31`; // red
+const col1 = `#5fb04a`; // green
+const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white
 
 // * Typography ====
@@ -131,15 +136,15 @@ const ProjectDiv = styled.section`
   row-gap: 1rem;
 
   @media (min-width: 481px) and (max-width: 768px) {
-    padding: 0 0 2rem 0;
+    width: 80%;
   }
   @media (min-width: 768px) and (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 2rem 2rem 2rem;
   }
   @media (min-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 9rem 2rem 9rem;
+    margin: 0 auto;
+    max-width: 1100px;
   }
 `;
 const LogDiv = styled.div`
@@ -147,13 +152,13 @@ const LogDiv = styled.div`
   display: flex;
   flex-direction: column;
   @media (min-width: 481px) and (max-width: 768px) {
-    padding: 0 0 2rem 0;
+    width: 80%;
   }
   @media (min-width: 768px) and (max-width: 1200px) {
-    padding: 0 2rem 2rem 2rem;
   }
   @media (min-width: 1200px) {
-    padding: 0 9rem 2rem 9rem;
+    margin: 0 auto;
+    max-width: 1100px;
   }
 `;
 const Divider = styled.div`

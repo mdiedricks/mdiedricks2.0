@@ -30,9 +30,15 @@ const Project = ({ state }) => {
 export default connect(Project);
 
 // * Colours
+// const bgcol = `#0F0104`; // dark red
+// const col1 = `#529840`; // green
+// const col2 = `#DC4F31`; // red
+// const col3 = `#FFE6E0`; // white
+
 const bgcol = `#0F0104`; // dark red
-const col1 = `#529840`; // green
-const col2 = `#DC4F31`; // red
+const bgcol2 = `#1e0308`; // dark red
+const col1 = `#5fb04a`; // green
+const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white
 
 // * Typography ====
@@ -50,7 +56,6 @@ const ProjectBody = styled.div`
   h4,
   h5 {
     margin: 1rem 0 2rem 0;
-    // margin-bottom: 2rem;
   }
   ul,
   ol {
@@ -74,7 +79,6 @@ const ProjectBody = styled.div`
   }
   p {
     margin: 2rem 0;
-    width: 98%;
   }
   blockquote {
     padding: 0.5rem 2rem;
@@ -105,7 +109,8 @@ const Content = styled.div`
         width: 70%;
     }
     @media(min-width:1200px){
-        width: 50%;
+      width: 80%;
+      max-width: 1100px;
     }
 `;
 

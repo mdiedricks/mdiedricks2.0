@@ -31,11 +31,12 @@ const recentPost = (props) => {
 
 export default connect(recentPost);
 
-// Colours
+// * Colours
+
 const bgcol = `#0F0104`; // dark red
 const bgcol2 = `#1e0308`; // dark red
-const col1 = `#529840`; // green
-const col2 = `#DC4F31`; // red
+const col1 = `#5fb04a`; // green
+const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white
 
 // * Typography ==========

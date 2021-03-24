@@ -26,6 +26,7 @@ const Root = ({ state, actions }) => {
         <Global
           styles={css`
             @import url("https://fonts.googleapis.com/css2?family=Space+Mono&family=East+Sea+Dokdo&family=Work+Sans&display=swap");
+            // @import url("https://fonts.googleapis.com/css2?family=Space+Mono&family=East+Sea+Dokdo&family=Inconsolata&display=swap");
             * {
               margin: 0;
               padding: 0;
@@ -34,6 +35,7 @@ const Root = ({ state, actions }) => {
             html {
               background-color: #0f0104;
               font-family: "Work Sans", sans-serif;
+              // font-family: "Inconsolata", serif;
               scroll-behavior: smooth;
             }
             nav a {
@@ -133,9 +135,14 @@ const Root = ({ state, actions }) => {
 export default connect(Root);
 
 // * Colours
+// const bgcol = `#0F0104`; // dark red
+// const col1 = `#529840`; // green 5fb04a
+// const col2 = `#DC4F31`; // red e67f69
+// const col3 = `#FFE6E0`; // white
+
 const bgcol = `#0F0104`; // dark red
-const col1 = `#529840`; // green
-const col2 = `#DC4F31`; // red
+const col1 = `#5fb04a`; // green
+const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white
 
 // * Typography =====

@@ -74,10 +74,16 @@ const List = ({ state }) => {
 export default connect(List);
 
 // * Colours =======
+// const bgcol = `#0F0104`; // dark red
+// const bgcol2 = `#1e0308`; // dark red
+// const col1 = `#529840`; // green
+// const col2 = `#DC4F31`; // red
+// const col3 = `#FFE6E0`; // white
+
 const bgcol = `#0F0104`; // dark red
 const bgcol2 = `#1e0308`; // dark red
-const col1 = `#529840`; // green
-const col2 = `#DC4F31`; // red
+const col1 = `#5fb04a`; // green
+const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white
 
 // * ======= PROJECT =======
@@ -190,7 +196,7 @@ const PostContainer = styled.div`
   margin-top: 2rem;
   display: grid;
   grid-template-rows: 1fr;
-  max-width: 960px;
+  // max-width: 960px;
 `;
 const PostMeta = styled.div`
   display: flex;
@@ -226,12 +232,9 @@ const PostCard = styled.div`
       border: 2px solid ${col2};
     }
   }
-
-  @media (min-width: 768px) and (max-width: 1200px) {
-    width: 80%;
-  }
+  width: 80%;
   @media (min-width: 1200px) {
-    width: 70%;
+    max-width: 1100px;
   }
 `;
 const ImageHolder = styled.div`
