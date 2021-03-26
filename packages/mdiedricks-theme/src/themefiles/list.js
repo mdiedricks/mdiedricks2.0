@@ -81,7 +81,7 @@ export default connect(List);
 // const col3 = `#FFE6E0`; // white
 
 const bgcol = `#0F0104`; // dark red
-const bgcol2 = `#1e0308`; // dark red
+const bgcol2 = `#2b050c`; // dark red
 const col1 = `#5fb04a`; // green
 const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white

@@ -29,14 +29,14 @@ export default connect(recentProject);
 
 // * Colours ==========
 const bgcol = `#0F0104`; // dark red
-const bgcol2 = `#1e0308`; // dark red
+const bgcol2 = `#2b050c`; // dark red
 const col1 = `#5fb04a`; // green
 const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white
 
 // * Typography ==========
 const ProjTitle = styled(Link)`
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   color: ${col1};
   text-decoration: none;
   transition: color 0.2s;
@@ -86,6 +86,7 @@ const TextHolder = styled.div`
 const Underline = styled.div`
   background-color: ${col2};
   height: 0.1px;
-  width: 100px;
+  width: 60px;
+  margin: 0.5rem 0;
   left: 0;
 `;

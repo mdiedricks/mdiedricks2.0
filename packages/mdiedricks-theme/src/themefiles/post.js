@@ -16,14 +16,11 @@ const Post = ({ state }) => {
       <ImageHolder>
         <FeaturedImage src={fMedia} />
       </ImageHolder>
-      <PostTitle>{post.title.rendered}</PostTitle>
       <PostDetails>
-        <VerticalLine />
+        <PostTitle>{post.title.rendered}</PostTitle>
+        <HorizontalLine />
         <PostDate>
-          <strong>Posted </strong>
-          {postDate} <br />
-          <strong>ID </strong>
-          {logID}
+          <strong>Posted </strong> {postDate} <strong>ID </strong> {logID}
         </PostDate>
       </PostDetails>
       <PostBody dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
@@ -40,7 +37,7 @@ export default connect(Post);
 // const col3 = `#FFE6E0`; // white
 
 const bgcol = `#0F0104`; // dark red
-const bgcol2 = `#1e0308`; // dark red
+const bgcol2 = `#2b050c`; // dark red
 const col1 = `#5fb04a`; // green
 const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white
@@ -55,7 +52,20 @@ const PostDate = styled.p`
 `;
 const PostBody = styled.div`
   text-align: justify-left;
-  margin: 2rem 0;
+  margin: 2rem auto 10rem;
+  @media (max-width: 481px) {
+    width: 100%;
+  }
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 90%;
+  }
+  @media (min-width: 768px) and (max-width: 1200px) {
+    width: 70%;
+  }
+  @media (min-width: 1200px) {
+    width: 80%;
+    max-width: 1100px;
+  }
   ul,
   ol {
     margin-left: 1rem;
@@ -103,41 +113,35 @@ const PostBody = styled.div`
 
 // * Layout ====
 const Content = styled.div`
-    color: ${col3};
-    width: 60%;
-    margin 0 auto 2rem auto;
-    @media(max-width:481px) {
-        width: 100%;          
-    }
-    @media(min-width:481px) and (max-width:768px){
-        width: 90%;
-    }
-    @media(min-width:768px) and (max-width:1200px){
-        width: 70%;
-    }
-    @media(min-width:1200px){
-      width: 80%;
-      max-width: 1100px;
-    }
+  color: ${col3};
+  margin: 0 auto;
 `;
 
 const PostDetails = styled.div`
   display: flex;
-  margin: 1rem 0;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem auto;
 `;
-const VerticalLine = styled.div`
-  width: 1px;
+const HorizontalLine = styled.div`
+  height: 1px;
+  width: 50%;
   background-color: ${col2};
-  margin-right: 1rem;
+  margin: 1rem auto;
 `;
 
 // * Components ====
 const ImageHolder = styled.div`
   width: 100%;
-  height: 20vh;
   overflow: hidden;
 `;
 const FeaturedImage = styled.img`
   width: 100%;
-  opacity: 0.8;
+  // left: 50%;
+  // margin-left: -50vw;
+  // margin-right: -50vw;
+  // max-width: 100vw;
+  // position: relative;
+  // right: 50%;
+  // width: 100vw;
 `;
