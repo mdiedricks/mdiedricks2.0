@@ -1,14 +1,35 @@
 import React from "react";
 import { connect, styled } from "frontity";
 import getProjectDate from "./util/getProjectDate";
+import { IoIosGitBranch, IoIosPlayCircle } from "react-icons/io";
 
 const Project = ({ state }) => {
-  // get current URL
+  // window.scrollTo(0, 0);
+
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
   const fMedia = state.source.attachment[post.featured_media].source_url;
   const projectDate = getProjectDate(post.date, "year");
-  console.log(post);
+  const repoLink = post.acf.repo_link;
+  const liveLink = post.acf.project_link;
+
+  let gitLink;
+  let playLink;
+
+  if (repoLink) {
+    gitLink = (
+      <ProjectLink href={repoLink} target="_blank">
+        <IoIosGitBranch size="2em" />
+      </ProjectLink>
+    );
+  }
+  if (liveLink) {
+    playLink = (
+      <ProjectLink href={liveLink} target="_blank">
+        <IoIosPlayCircle size="2em" />
+      </ProjectLink>
+    );
+  }
 
   return (
     <Content>
@@ -20,6 +41,10 @@ const Project = ({ state }) => {
         <VerticalLine />
         <ProjectDate>{projectDate}</ProjectDate>
       </ProjectDetails>
+
+      {repoLink && gitLink}
+      {repoLink && playLink}
+
       <ProjectBody
         dangerouslySetInnerHTML={{ __html: post.content.rendered }}
       />
@@ -30,11 +55,6 @@ const Project = ({ state }) => {
 export default connect(Project);
 
 // * Colours
-// const bgcol = `#0F0104`; // dark red
-// const col1 = `#529840`; // green
-// const col2 = `#DC4F31`; // red
-// const col3 = `#FFE6E0`; // white
-
 const bgcol = `#0F0104`; // dark red
 const bgcol2 = `#2b050c`; // dark red
 const col1 = `#5fb04a`; // green
@@ -94,24 +114,28 @@ const ProjectBody = styled.div`
   }
 `;
 
+const ProjectLink = styled.a`
+  margin-right: 0.5rem;
+`;
+
 // * Layout ====
 const Content = styled.div`
-    color: ${col3};
-    width: 60%;
-    margin 0 auto 2rem auto;
-    @media(max-width:481px) {
-        width: 100%;          
-    }
-    @media(min-width:481px) and (max-width:768px){
-        width: 90%;
-    }
-    @media(min-width:768px) and (max-width:1200px){
-        width: 70%;
-    }
-    @media(min-width:1200px){
-      width: 80%;
-      max-width: 1100px;
-    }
+  color: ${col3};
+  width: 60%;
+  margin 0 auto 2rem auto;
+  @media(max-width:481px) {
+      width: 100%;          
+  }
+  @media(min-width:481px) and (max-width:768px){
+      width: 90%;
+  }
+  @media(min-width:768px) and (max-width:1200px){
+      width: 70%;
+  }
+  @media(min-width:1200px){
+    width: 80%;
+    max-width: 1100px;
+  }
 `;
 
 const ProjectDetails = styled.div`
@@ -123,11 +147,11 @@ const VerticalLine = styled.div`
   background-color: ${col2};
   margin-right: 1rem;
 `;
-const Divider = styled.div`
-  background-color: ${col2};
-  height: 1px;
-  width: 60%;
-  margin: 0 auto;
+const ProjectLinks = styled.div`
+  margin: 1rem;
+  :hover {
+    color: ${col3};
+  }
 `;
 
 // * Components ====

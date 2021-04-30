@@ -5,6 +5,7 @@ import getProjectDate from "../util/getProjectDate";
 
 function recentProject(props) {
   const projDate = getProjectDate(props.proj.date, "year");
+  const textContent = props.proj.excerpt.rendered.slice(3, 100) + "...";
 
   return (
     <ProjCard>
@@ -17,9 +18,7 @@ function recentProject(props) {
         </ProjTitle>
         <ProjDate>{projDate}</ProjDate>
         <Underline />
-        <ProjEx
-          dangerouslySetInnerHTML={{ __html: props.proj.excerpt.rendered }}
-        />
+        <ProjEx>{textContent}</ProjEx>
       </TextHolder>
     </ProjCard>
   );
@@ -36,7 +35,7 @@ const col3 = `#FFE6E0`; // white
 
 // * Typography ==========
 const ProjTitle = styled(Link)`
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   color: ${col1};
   text-decoration: none;
   transition: color 0.2s;
@@ -71,13 +70,14 @@ const ImageHolder = styled.div`
   position: relative;
   overflow: hidden;
   margin: 0 auto 0.5rem;
+  min-height: 115px;
   max-height: 120px;
   width: 100%;
   border: 1px solid ${col2};
 `;
 const Image = styled.img`
-  max-width: 100%;
-  min-width: 100%;
+  width: 100%;
+  min-height: 100%;
   object-fit: fill;
 `;
 const TextHolder = styled.div`

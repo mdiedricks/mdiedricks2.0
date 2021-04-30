@@ -3,11 +3,11 @@ import { connect, styled } from "frontity";
 import getProjectDate from "./util/getProjectDate";
 
 const Post = ({ state }) => {
+  // window.scrollTo(0, 0);
+
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
   const fMedia = state.source.attachment[post.featured_media].source_url;
-  // console.log(fMedia);
-  console.log(post);
   const postDate = getProjectDate(post.date);
   const logID = post.acf.log_id;
 
@@ -31,11 +31,6 @@ const Post = ({ state }) => {
 export default connect(Post);
 
 // * Colours
-// const bgcol = `#0F0104`; // dark red
-// const col1 = `#529840`; // green
-// const col2 = `#DC4F31`; // red
-// const col3 = `#FFE6E0`; // white
-
 const bgcol = `#0F0104`; // dark red
 const bgcol2 = `#2b050c`; // dark red
 const col1 = `#5fb04a`; // green

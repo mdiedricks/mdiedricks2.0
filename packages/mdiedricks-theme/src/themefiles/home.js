@@ -19,7 +19,7 @@ const Home = ({ state, actions }) => {
 
   if (projectsData.isReady) {
     projects = projectsData.items
-      .slice(0, 3)
+      .slice(0, 5)
       .map(({ type, id }) => state.source[type][id]);
     for (let obj of projects) {
       obj.imageObj = state.source.attachment[obj.featured_media].source_url;
@@ -46,15 +46,14 @@ const Home = ({ state, actions }) => {
           I've been
           <TextLink href="#recent_posts"> writing</TextLink> about lately.
         </Paragraph>
-        <CTAButton>
-          <a href="http://linkedin.com/in/mdiedricks/" target="_blank">
-            Get in touch!
-          </a>
+        <CTAButton href="http://linkedin.com/in/mdiedricks/" target="_blank">
+          Get in touch!
         </CTAButton>
       </HeroDiv>
-      <Divider />
 
-      <SectionTitle id="recent_projects">Recent Projects</SectionTitle>
+      <Divider id="recent_projects" />
+
+      <SectionTitle>Recent Projects</SectionTitle>
       <ProjectDiv>
         {
           projectsData.isReady
@@ -64,12 +63,14 @@ const Home = ({ state, actions }) => {
             : null // TODO add "loading" article here
         }
       </ProjectDiv>
-      <CTAButtonSml>
-        <a href="/projects">Explore projects</a>
-      </CTAButtonSml>
-      <Divider />
 
-      <SectionTitle id="recent_posts">Recent logs</SectionTitle>
+      <ButtonRow>
+        <CTAButtonSml href="/projects">Explore projects</CTAButtonSml>
+      </ButtonRow>
+
+      <Divider id="recent_posts" />
+
+      <SectionTitle>Recent logs</SectionTitle>
       <LogDiv>
         {
           postsData.isReady
@@ -77,37 +78,42 @@ const Home = ({ state, actions }) => {
             : null // TODO add "loading" article here
         }
       </LogDiv>
-      <CTAButtonSml>
-        <a href="/logbook">Explore Logs</a>
-      </CTAButtonSml>
+
+      <ButtonRow>
+        <CTAButtonSml href="/logbook">Explore Logs</CTAButtonSml>
+      </ButtonRow>
     </div>
   );
 };
 
 export default connect(Home);
-// * Colours
-// const bgcol = `#0F0104`; // dark red
-// const col1 = `#529840`; // green
-// const col2 = `#DC4F31`; // red
-// const col3 = `#FFE6E0`; // white
 
+// Heights of various elements
+// nav 71
+// title 88
+// cta 101
+// divider  16 1 16
+// footer 70
+// * Colours
 const bgcol = `#0F0104`; // dark red
 const col1 = `#5fb04a`; // green
 const col2 = `#e67f69`; // red
 const col3 = `#FFE6E0`; // white
 
 // * Typography ====
-const SectionTitle = styled.h3`
+const SectionTitle = styled.p`
   color: ${col2};
   margin: 2rem 0;
+  font-size: 1.25rem;
 `;
 const MainText = styled.h1`
   font-size: 48px;
   padding: 0 0 1rem 0;
 `;
 const Paragraph = styled.p`
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   padding: 1rem 0 1rem 0;
+  margin-bottom: 1rem;
 `;
 const TextLink = styled.a`
   text-decoration: none;
@@ -125,21 +131,19 @@ const HeroDiv = styled.section`
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  min-height: calc(100vh - 70px - 71px);
+  min-height: calc(100vh - 71px - 16px);
   padding: 0 15%;
 `;
 const ProjectDiv = styled.section`
-  min-height: calc(100vh - 70px - 71px);
+  min-height: calc(100vh - 88px - 101px);
   display: grid;
   grid-template-columns: 1fr;
-  column-gap: 1rem;
-  row-gap: 1rem;
 
   @media (min-width: 481px) and (max-width: 768px) {
-    width: 80%;
+    grid-template-columns: repeat(2, 1fr);
   }
   @media (min-width: 768px) and (max-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   @media (min-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
@@ -147,8 +151,8 @@ const ProjectDiv = styled.section`
     max-width: 1100px;
   }
 `;
-const LogDiv = styled.div`
-  min-height: calc(100vh - 70px - 71px);
+const LogDiv = styled.section`
+  min-height: calc(100vh - 88px - 101px - 70px);
   display: flex;
   flex-direction: column;
   @media (min-width: 481px) and (max-width: 768px) {
@@ -165,52 +169,42 @@ const Divider = styled.div`
   background-color: ${col2};
   height: 1px;
   width: 60%;
-  margin: 0 auto;
+  margin: 1rem auto;
+`;
+const ButtonRow = styled.section`
+  margin: 2rem 0;
 `;
 
 // * Components =====
-const CTAButton = styled.div`
-  background-color: ${bgcol};
+const CTAButton = styled.a`
+  display: inline-block;
   border: 1px solid ${col1};
-  padding: 12px 20px;
-  margin: 1.5rem auto;
-  width: auto;
-  text-align: center;
+  color: ${col1};
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
   cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
   :hover {
     border: 1px solid ${col2};
-    transform: border-color 0.3s;
-    a {
-      color: ${col2};
-      transform: color 0.3s;
-    }
-  }
-  a {
-    text-decoration: none;
-    color: ${col1};
-    font-size: 1.2rem;
-    font-weight: bold;
+    transition: border 0.2s;
+    color: ${col2};
+    transition: color 0.2s;
   }
 `;
-const CTAButtonSml = styled.button`
-  background-color: ${bgcol};
+const CTAButtonSml = styled.a`
+  display: inline-block;
   border: 1px solid ${col1};
-  padding: 8px 16px;
-  margin: 1.5rem auto;
-  text-align: center;
+  color: ${col1};
+  padding: 0.5rem 1rem;
   cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
   :hover {
     border: 1px solid ${col2};
-    transform: border-color 0.3s;
-    a {
-      color: ${col2};
-      transform: color 0.3s;
-    }
-  }
-  a {
-    text-decoration: none;
-    color: ${col1};
-    font-size: 0.8rem;
-    font-weight: bold;
+    transition: border-color 0.2s;
+    color: ${col2};
+    transition: color 0.2s;
   }
 `;

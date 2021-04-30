@@ -9,8 +9,6 @@ const List = ({ state }) => {
   let projects = [];
   let posts = [];
 
-  //   const postDate = getProjectDate(props.post.date);
-
   // check the route if projects page or logbook page
   if (data.isReady && state.router.link === "/projects/") {
     projects = data.items
@@ -122,7 +120,7 @@ const ProjectBG = styled.div`
 `;
 
 // * Components =====
-const ProjectCard = styled.div`
+const ProjectCard = styled.article`
   position: relative;
   border: 1px solid ${bgcol};
   :hover {
@@ -145,7 +143,8 @@ const ProjectCard = styled.div`
   overflow: hidden;
 `;
 const ProjectImage = styled.img`
-  opacity: 0.5;
+  opacity: 0.8;
+  overlay
   transition: opacity 0.2s ease;
   width: 100%;
   height: 100%;
@@ -212,7 +211,7 @@ const Underline = styled.div`
 `;
 
 // * Components =====
-const PostCard = styled.div`
+const PostCard = styled.article`
   padding: 1rem;
   color: ${col1};
   margin: 1rem auto 0 auto;
@@ -236,17 +235,4 @@ const PostCard = styled.div`
   @media (min-width: 1200px) {
     max-width: 1100px;
   }
-`;
-const ImageHolder = styled.div`
-  margin-bottom: 1rem;
-  height: 35vh;
-  overflow: hidden;
-  border: 2px solid ${bgcol};
-`;
-const PostImage = styled.img` 
-    opacity: 0.5;
-    transition: opacity 0.5s;
-    width: 100%;
-    vertical align: top;
-    object-fit: cover;
 `;

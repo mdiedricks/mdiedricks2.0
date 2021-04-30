@@ -9,9 +9,6 @@ const recentPost = (props) => {
 
   return (
     <PostCard>
-      {/* <ImageHolder>
-        <Image src={props.post.jetpack_featured_media_url} />
-      </ImageHolder> */}
       <PostDetails>
         <PostDate>{postDate}</PostDate>
         <PostDate>ID: {logID}</PostDate>
@@ -41,11 +38,9 @@ const col3 = `#FFE6E0`; // white
 
 // * Typography ==========
 const PostTitle = styled(Link)`
-  font-size: 1.6rem;
-  line-height: 1.6rem;
+  font-size: 1.5rem;
   color: ${col1};
   text-decoration: none;
-  padding: 0 0 1rem 0;
   transition: color 0.2s;
   :hover {
     color: ${col2};
@@ -60,30 +55,14 @@ const PostEx = styled.p`
 `;
 // * Layout ==========
 const PostCard = styled.div`
-  // display: grid;
-  // grid-template-columns: 124px 1fr;
-  // column-gap: 1rem;
   display: flex;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 1.5rem;
   border: 1px solid ${bgcol};
   transition: border-color 0.3s;
   :hover {
     border: 1px solid ${col2};
     background-color: ${bgcol2};
   }
-`;
-const ImageHolder = styled.div`
-  position: relative;
-  overflow: hidden;
-  min-height: 260px;
-  max-height: 33vh;
-  border: 1px solid ${col2};
-`;
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 `;
 const TextHolder = styled.div`
   text-align: left;

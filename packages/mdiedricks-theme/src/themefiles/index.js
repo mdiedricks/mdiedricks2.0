@@ -1,6 +1,5 @@
 import React from "react";
-//by importing connect you make state available as props
-//it must also wrap the default export
+//by importing connect you make state available as props it must also wrap the default export
 // Global - allows global css params
 //css is a function used for styles prop
 //Head allows your to add head tags foir SEO
@@ -42,7 +41,7 @@ const Root = ({ state, actions }) => {
             }
             blockquote {
               font-family: "East Sea Dokdo", cursive;
-              font-size: 1.8rem;
+              font-size: 2rem;
             }
           `}
         />
@@ -219,7 +218,7 @@ const NavMenuShort = styled.div`
 `;
 const Footer = styled.div`
   height: 70px;
-  padding: 0.8rem;
+  padding: 1rem;
   color: ${col3};
 `;
 // * Components =====
